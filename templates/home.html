@@ -1,0 +1,46 @@
+{%extends 'base.html'%} {%block title%} Venta de Guitarras - Home {%endblock%}
+{%block content%}
+<div class="container m-5">
+  <h3>Nuestros productos</h3>
+  <div class="row">
+    {% for product in products %}
+    <div class="card m-2" style="height: 16rem; width: 16rem">
+      <div class="card-body m-2">
+        <a
+          href="/comprar?product={{product.id }} "
+          class="card-link text-center my -2"
+        >
+          <img
+            class="round-corner"
+            src="../static/img/{{product.image}}"
+            width="150px"
+            height="100px"
+          />
+        </a>
+
+        <h5 class="card-title">
+          <a
+            href="/comprar?product={{product.id }} "
+            class="card-link text-center my -2"
+          >
+            {{product.title}}
+          </a>
+        </h5>
+
+        <p>${{product.price}} &nbsp;</p>
+        {% if adminUser == 'admin' %}
+        <div>
+          <a
+            href="/borrar?product={{product.id }} "
+            class="card-link text-center my -2"
+            ><small> Borrar producto </small>
+          </a>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{%endblock%}

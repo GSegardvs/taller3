@@ -1,0 +1,57 @@
+{%extends 'base.html'%} {%block Title%}Create Product{%endblock%} {%block
+content%}
+
+<div class="container m-5">
+  <h3>Agregar productos</h3>
+  <div class="col-4">
+    <form method="post" action="/products" enctype="multipart/form-data">
+      <!-- Title -->
+      <div class="mb-3">
+        <label for="title" class="form-label">Nombre:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          name="title"
+          required
+        />
+      </div>
+
+      <!-- Description -->
+      <div class="mb-3">
+        <label for="description" class="form-label">Descripcion:</label>
+        <textarea
+          class="form-control"
+          id="description"
+          name="description"
+          rows="3"
+          cols="50"
+          maxlength="150"
+        ></textarea>
+      </div>
+
+      <!-- Price -->
+      <div class="mb-3">
+        <label for="price" class="form-label">Precio:</label>
+        <input
+          type="number"
+          class="form-control"
+          id="price"
+          name="price"
+          step="0.01"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="image" class="form-label">Precio:</label>
+        <input type="file" name="file1" />
+      </div>
+
+      <br />
+      <button type="submit" class="btn btn-primary">Agregar</button>
+    </form>
+  </div>
+</div>
+
+{%endblock%}

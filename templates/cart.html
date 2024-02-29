@@ -1,0 +1,41 @@
+{%extends 'base.html'%} {%block title%} Venta de Guitarras - Home {%endblock%}
+{%block content%}
+
+<div class="container m-5">
+  <h3>Productos seleccionados para comprar</h3>
+  <div class="row">
+    {% for product in products %}
+    <div class="card m-2" style="height: 16rem; width: 32rem">
+      <div class="card-body m-2">
+        <h5 class="card-title">{{product.title}}</h5>
+        <p class="card-text">{{product.description}}</p>
+        <p class="list-group-item">${{product.price}}</p>
+        <a
+          href="/remover?product={{product.id }} "
+          class="card-link text-center my -2"
+          >Eliminar</a
+        >
+        <div>
+          <img
+            class="round-corner"
+            src="../static/img/{{product.image}}"
+            width="75px"
+            height="50px"
+          />
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% if products %}
+  <br />Total: {{ total }}
+  <br />
+  <form method="post" action="cart">
+    <button type="submit" class="btn btn-primary mt-3">Confirmar compra</button>
+  </form>
+  {% else %}
+  <div>No hay productos en el carrito</div>
+  {% endif%}
+</div>
+
+{%endblock%}
